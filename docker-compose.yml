@@ -1,0 +1,8 @@
+version: '3'
+services:
+  misp-proxy:
+    build: src
+    volumes:
+      - ./config.yml:/app/config.yml:ro
+    ports:
+      - "8000:80"

@@ -1,0 +1,18 @@
+server {
+    listen 0.0.0.0:443 ssl;
+
+    ssl_certificate /etc/ssl/nginx/nginx.crt;
+    ssl_certificate_key /etc/ssl/nginx/nginx.key;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+    location / {
+        proxy_pass {{ backend }};
+        proxy_redirect {{ backend }} {{ frontend }};
+        proxy_set_header Accept-Encoding "";
+        proxy_set_header Cookie "{{ cookies }}"; # AUTO-GENERATED DO NOT EDIT
+
+        sub_filter {{ backend }} {{ frontend }};
+        sub_filter_once off;
+        sub_filter_types application/json application/javascript text/css;
+    }
+}
