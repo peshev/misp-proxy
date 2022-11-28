@@ -1,9 +1,16 @@
 server {
+
+{% if ssl %}
     listen 0.0.0.0:443 ssl;
 
     ssl_certificate /etc/ssl/nginx/nginx.crt;
     ssl_certificate_key /etc/ssl/nginx/nginx.key;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+{% endif %}
+
+{% if not ssl %}
+    listen 0.0.0.0:443 ssl;
+{% endif %}
 
     location / {
         proxy_pass {{ backend }};

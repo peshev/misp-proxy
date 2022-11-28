@@ -2,3 +2,4 @@ user: user@misp.upstream
 pass: upstreampassword
 backend: https://misp.upstream
 frontend: http://misp.local
+ssl: no
