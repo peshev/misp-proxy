@@ -9,7 +9,7 @@ server {
 {% endif %}
 
 {% if not ssl %}
-    listen 0.0.0.0:443 ssl;
+    listen 0.0.0.0:80;
 {% endif %}
 
     location / {
